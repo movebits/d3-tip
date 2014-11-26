@@ -44,7 +44,7 @@
       var args = Array.prototype.slice.call(arguments)
       if(args[args.length - 1] instanceof SVGElement) target = args.pop()
 
-      var content = html.apply(this, args),
+      var content = html.apply(this, args).join('<br />'),
           poffset = offset.apply(this, args),
           dir     = direction.apply(this, args),
           nodel   = d3.select(node),
@@ -140,6 +140,13 @@
     //
     // Returns html value or tip
     tip.html = function(v) {
+      if (!arguments.length) return html
+      html = v == null ? v : d3.functor(v)
+
+      return tip
+    }
+
+    tip.displayD3Tip = function(v) {
       if (!arguments.length) return html
       html = v == null ? v : d3.functor(v)
 

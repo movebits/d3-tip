@@ -235,7 +235,7 @@
     }
 
     function initNode() {
-      var node = d3.select(document.createElement('div'))
+      var node = d3.select(document.createElement('div')).attr('class', 'd3-tip')
       node.style({
         position: 'absolute',
         top: 0,
